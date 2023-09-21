@@ -16,7 +16,7 @@
 
 #define P 3.14259265
 
-double nx, tx, ny, nz, lx, ly, lz, nm, lm, illu, a, ca, sa;
+double nx, ox, ny, nz, lx, ly, lz, nm, lm, illu, a, ca, sa;
 int x, y, u, v, char_i;
 
 const uint64_t texture[32] = {
@@ -47,9 +47,9 @@ int main(void){
 					lm = sqrt(LX * LX + LY * LY + LZ * LZ);
 					nx /= nm; ny /= nm; nz /= nm;
 					illu = nx * LX / lm + ny * LY / lm + nz * LZ / lm;
-					ca = cos(a); sa = sin(a); tx = nx;
+					ca = cos(a); sa = sin(a); ox = nx;
 					nx = nx * ca + nz * sa;
-					nz = tx * -sa + nz * ca;
+					nz = ox * -sa + nz * ca;
 					nm = sqrt(nx * nx + ny * ny + nz * nz);
 					nx /= nm; ny /= nm; nz /= nm;
 					u = (atan2(nz, nx) / (2 * P) + 0.5) * 63;
