@@ -38,4 +38,4 @@ del l[0]
 for i in range(len(l)):
     l[i] = hex(int(l[i][:-2].replace(",", ""), 2))
     l[i] = l[i][:2] + ("0" * (18 - len(l[i]))) + l[i][2:]
-print(l)
+    print(l[i] + ",")
