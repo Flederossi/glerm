@@ -30,8 +30,9 @@ const uint64_t texture[32] = {
 	0x0000180007f7fff8, 0x03fff01ffffffff8, 0x07fff07ffffffff8, 0xffffffffffffffff,
 };
 
-const char illu_char[] = ".'`^\",:;Il!i<>~+_-?[]{}1()|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$";
-const char illu_char_small[] = ".:-=+*#%@";
+//const char illu_char[] = ".'`^\",:;Il!i<>~+_-?[]{}1()|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$";
+//const char illu_char[] = ".:-=+*#%@";
+const char illu_char[] = ".,-~:;=!*#$@";
 
 int main(void){
 	for (;;){
