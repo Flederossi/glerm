@@ -12,9 +12,9 @@
 #define SY 25	// y-value of the globe position on canvas
 #define SR 20	// Radius of the globe
 
-#define LX 1	// x-Value of the light source position
-#define LY -1	// y-Value of the light source position
-#define LZ -1	// z-Value of the light source position
+#define LX 1	// x-value of the light source position
+#define LY -1	// y-value of the light source position
+#define LZ -1	// z-value of the light source position
 
 // Texture of the globe
 const uint64_t texture[32] = {
@@ -38,22 +38,22 @@ int main(void){
 	for (;;){
 		printf("\033[0;0H");
 		a -= 0.008;
-		for (y = 0; y < H; y++){										// Loop through all 'pixels'
+		for (y = 0; y < H; y++){							// Loop through all 'pixels'
 			for (x = 0; x < W; x++){
 				if (sqrt((x - SX) * (x - SX) + (y - SY) * (y - SY)) <= SR){
-					nx = x - SX; ny = y - SY;							// x- and y-position relative to center of globe
-					nz = -sqrt(SR * SR - ny * ny - nx * nx);			// Calculate z-position of current pixel
+					nx = x - SX; ny = y - SY;				// x- and y-position relative to center of globe
+					nz = -sqrt(SR * SR - ny * ny - nx * nx);		// Calculate z-position of current pixel
 					nm = sqrt(nx * nx + ny * ny + nz * nz);
 					lm = sqrt(LX * LX + LY * LY + LZ * LZ);
-					nx /= nm; ny /= nm; nz /= nm;						// Normalize current position on globe
+					nx /= nm; ny /= nm; nz /= nm;				// Normalize current position on globe
 					illu = nx * LX / lm + ny * LY / lm + nz * LZ / lm;	// Calculate illumination
 					ca = cos(a); sa = sin(a); ox = nx;
-					nx = nx * ca + nz * sa;								// Calculate x-position after rotation
-					nz = ox * -sa + nz * ca;							// Calculate z-position after rotation
+					nx = nx * ca + nz * sa;					// Calculate x-position after rotation
+					nz = ox * -sa + nz * ca;				// Calculate z-position after rotation
 					nm = sqrt(nx * nx + ny * ny + nz * nz);
-					nx /= nm; ny /= nm; nz /= nm;						// Normalize rotated position
-					u = (atan2(nz, nx) / (2 * P) + 0.5) * 63;			// Calculate uv-coordinate on texture
-					v = (asin(ny) / P + 0.5) * 31;						// using uv-mapping
+					nx /= nm; ny /= nm; nz /= nm;				// Normalize rotated position
+					u = (atan2(nz, nx) / (2 * P) + 0.5) * 63;		// Calculate uv-coordinate on texture
+					v = (asin(ny) / P + 0.5) * 31;				// using uv-mapping
 					illu = (double)((texture[v] >> (63 - u)) & 1) * illu;
 					char_i = floor((illu >= 0 ? illu : 0) * (sizeof(illu_char) / sizeof(char) - 1));
 					putchar(illu_char[char_i]);
