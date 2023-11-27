@@ -40,7 +40,7 @@ int main(void){
 		a -= 0.008;
 		for (y = 0; y < H; y++){							// Loop through all 'pixels'
 			for (x = 0; x < W; x++){
-				if (sqrt((x - SX) * (x - SX) + (y - SY) * (y - SY)) <= SR){
+				if (sqrt((x - SX) * (x - SX) + (y - SY) * (y - SY)) <= SR){	// Check if pixel is contained in globe
 					nx = x - SX; ny = y - SY;				// x- and y-position relative to center of globe
 					nz = -sqrt(SR * SR - ny * ny - nx * nx);		// Calculate z-position of current pixel
 					nm = sqrt(nx * nx + ny * ny + nz * nz);
