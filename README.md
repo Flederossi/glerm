@@ -16,6 +16,7 @@ make
 ```sh
 make run
 ```
+<br>
 
 ## Configure
 Some parameters of the globe can be configured directly in [main.c](https://github.com/Flederossi/glerm/blob/main/src/main.c).
