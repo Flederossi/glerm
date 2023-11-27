@@ -14,7 +14,7 @@
 #define LY -1
 #define LZ -1
 
-#define P 3.14259265
+#define P 3.14159265
 
 double nx, ox, ny, nz, lx, ly, lz, nm, lm, illu, a, ca, sa;
 int x, y, u, v, char_i;
